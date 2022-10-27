@@ -12,13 +12,13 @@ def boxes(num,color):
 @app.route('/lists')
 def render_lists():
     # Soon enough, we'll get data from a database, but for now, we're hard coding data
-    student_info = [
-        {'name' : 'Michael', 'age' : 35},
-        {'name' : 'John', 'age' : 30 },
-        {'name' : 'Mark', 'age' : 25},
-        {'name' : 'KB', 'age' : 27}
-    ]
-    return render_template("lists.html", random_numbers = [3,1,5], students = student_info)
+  users_info = [
+    {'first_name' : 'Michael', 'last_name' : 'Jordan', 'full_name' : 'Micheal Jordan'},
+    {'first_name' : 'John', 'last_name' : 'Supsupin', 'full_name' : 'John Supsupin'},
+    {'first_name' : 'Mark', 'last_name' : 'Guillen', 'full_name' : 'Mark Guillen '},
+    {'first_name' : 'KB', 'last_name' : 'Tonel', 'full_name' : 'KB Tonel'}
+]
+  return render_template("lists.html", users = users_info)
 
 
 
