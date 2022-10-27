@@ -1,24 +1,15 @@
-from flask import Flask, render_template  # Import Flask to allow us to create our app
-
-
+from flask import Flask, render_template, session  # Import Flask to allow us to create our app
 
 app = Flask(__name__)    # Create a new instance of the Flask class called "app"
 
-@app.route('/play/<int:num>/<string:color>')          # The "@" decorator associates this route with the function immediately following
-def boxes(num,color):
-  return render_template("index.html", num = num,color = color ) 
+@app.route('/')          # The "@" decorator associates this route with the function immediately following
+def index():
+  if 'countdown' not in session:
+      session['countdown'] = 0
+      session['countdown'] += 1
+  return render_template("index.html", session=['countdown']) 
   
 
-@app.route('/lists')
-def render_lists():
-    # Soon enough, we'll get data from a database, but for now, we're hard coding data
-  users_info = [
-    {'first_name' : 'Michael', 'last_name' : 'Jordan', 'full_name' : 'Micheal Jordan'},
-    {'first_name' : 'John', 'last_name' : 'Supsupin', 'full_name' : 'John Supsupin'},
-    {'first_name' : 'Mark', 'last_name' : 'Guillen', 'full_name' : 'Mark Guillen '},
-    {'first_name' : 'KB', 'last_name' : 'Tonel', 'full_name' : 'KB Tonel'}
-]
-  return render_template("lists.html", users = users_info)
 
 
 
